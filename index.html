@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="descrption" content = "Daily Activity Planner">
+    <title>Henry's Daily Planner</title>
+    <style>
+    .wrapper{width:100%;}
+    .box{float:left; height:100px;}
+    .box:nth-child(1){
+      width:50%;
+    }
+
+    .box:nth-child(3){
+      width: 50%;
+    }
+    .iframe-embed{
+      position: absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      height:100%;
+      width:100%;
+      border:0;
+    }
+    .iframe-embed-wrapper{
+      position:relative;
+      display: block;
+      height: 0;
+      padding:0;
+      overflow:hidden;
+    }
+    .iframe-embed-responsive-16by9{
+      padding-bottom:56.25%;
+    }
+    </style>
+
+
+  </head>
+
+  <body style= "background-color:LightSteelBlue">
+      <p><h1>Daily Activity Planner</h1></p>
+      <button type="button" onclick="displayDate()" name="button">Today's Date</button>
+      <p id = "DateArea"></p>
+
+      <script type="text/javascript">
+        function displayDate(){
+          let d = new Date();
+          document.getElementById("DateArea").innerHTML = "<h3>Today's date is "+d.getMonth()+'/'+d.getDate()+'/'+d.getFullYear()+"</h3>"
+        }
+
+      </script>
+
+      <hr>
+      <div class = "wrapper">
+        <div class = "box">
+
+        <p><h2>Tasks and Checkmarks</h2></p>
+
+        <input type="checkbox" id="checkbox1" onclick="taskComplete()">
+        <input type="text" name="" id="textTask1"value="task 1" size="40">
+        <p>
+
+        <input type="checkbox" id="checkbox2"onclick="taskComplete()">
+        <input type="text" name="" id="textTask2"value="task 2"size="40">
+        <p>
+
+        <input type="checkbox" id="checkbox3"onclick="taskComplete()">
+        <input type="text" name="" id="textTask3"value="task 3"size="40">
+        <p>
+
+        <input type="checkbox" id="checkbox4"onclick="taskComplete()">
+        <input type="text" name="" id="textTask4"value="task 4"size="40">
+        <p>
+
+        <input type="checkbox" id="checkbox5"onclick="taskComplete()">
+        <input type="text" name=""id="textTask5" value="task 5"size="40">
+        <p>
+
+
+        <script type="text/javascript">
+        function taskComplete(){
+          var checkbox1 = document.getElementById("checkbox1")
+          var checkbox2 = document.getElementById("checkbox2")
+          var checkbox3 = document.getElementById("checkbox3")
+          var checkbox4 = document.getElementById("checkbox4")
+          var checkbox5 = document.getElementById("checkbox5")
+          var tasksCompleted = "You have completed the following tasks: "
+          if(checkbox1.checked==true){
+            var taskContent1 = document.getElementById('textTask1').value
+            tasksCompleted+="\n"+taskContent1
+          }
+          if(checkbox2.checked==true){
+            var taskContent2 = document.getElementById('textTask2').value
+            tasksCompleted+="\n"+taskContent2
+          }
+          if(checkbox3.checked==true){
+            var taskContent3 = document.getElementById('textTask3').value
+            tasksCompleted+="\n"+taskContent3
+          }
+          if(checkbox4.checked==true){
+            var taskContent4 = document.getElementById('textTask4').value
+            tasksCompleted+="\n"+taskContent4
+          }
+          if(checkbox5.checked==true){
+            var taskContent5 = document.getElementById('textTask5').value
+            tasksCompleted+="\n"+taskContent5
+          }
+          window.alert(tasksCompleted)
+
+        }
+        </script>
+
+        <textarea footNote="footNote" rows="2" cols="40">Any Notes? Reminders for Tomorrow?
+        </textarea>
+        <p>
+        <button type="button" onclick="printCurrentPage()" name="buttonCompleteAll">Completed All Tasks. Save Today's Accomplishments</button>
+
+        <script type="text/javascript">
+          function printCurrentPage(){
+            document.getElementById("iframeID1").style.visibility="hidden";
+            document.getElementById("secondTitle").style.visibility="hidden";
+            window.print();
+            document.getElementById("iframeID1").style.visibility="visible";
+            document.getElementById("secondTitle").style.visibility="visible";
+          }
+
+        </script>
+
+        </div>
+
+        <h2 id="secondTitle">Helpful Tool</h2>
+
+        <div class = "box iframe-embed-wrapper iframe-embed-responsive-16by9">
+          <iframe class= "iframe-embed"src="https://www.online-timer.net/" id="iframeID1"></iframe>
+      </div>
+
+    </div>
+  </body>
+
+</html>
